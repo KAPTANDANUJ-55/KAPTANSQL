@@ -46,3 +46,18 @@
 # select name,email from users where name like'kaptan%'
 
 
+# ALTER table users add constraint unique (password)
+#  SELECT * FROM users WHERE salary < 20000 OR salary IS NULL;
+
+-- Jinki salary 20000 se kam ya khali hai unhe 20000 kar do:
+# UPDATE users
+# SET salary = 20000
+# WHERE salary < 20000 OR salary IS NULL;
+
+
+#  ALTER TABLE users
+#      ADD CONSTRAINT chk_dob CHECK (date_of_birth > '1920-07-02');
+# #
+# SELECT id, name, date_of_birth
+# FROM users
+# WHERE date_of_birth <= '2000-01-01' OR date_of_birth IS NULL;
