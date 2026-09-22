@@ -85,3 +85,49 @@
 #  set autocommit =1;
 
 
+# -- shifting and resequence
+# -- Resequencing IDs from 1 to N without gaps
+#  SET @count = 0;
+#  UPDATE users
+# SET id = (@count := @count + 1)
+# ORDER BY id ASC;
+#
+# -- Shift Down (ID 5 par jagah banane ke liye IDs ko aage dhakelna)
+# -- Note: DESC order zaroori hai taaki duplicate primary key collision na ho
+# UPDATE users
+# SET id = id + 1
+# WHERE id >= 5
+# ORDER BY id DESC;
+#
+# -- Shift Up (ID 5 delete hone ke baad baaki records ko peeche lana)
+# UPDATE users
+# SET id = id - 1
+# WHERE id > 5
+# ORDER BY id ASC;
+#
+# -- Temporary Swap (Jesse aur doosre record ki ID aapas me badalna)
+# UPDATE users SET id = 999 WHERE id = 3;
+# UPDATE users SET id = 3 WHERE id = 8;
+# UPDATE users SET id = 8 WHERE id = 999;
+
+#
+# delete from users where id = 8;
+
+# -- Agar record pehle se exist kare (id conflict) toh update karo, warna insert karo (UPSERT)
+# INSERT INTO users (id, name, age)
+# VALUES (5, 'Walter White', 52)
+# ON DUPLICATE KEY UPDATE
+#     name = VALUES(name),
+#     age = VALUES(age);
+#
+# -- Agar record pehle se ho toh error na de, chupchap ignore kar de
+# INSERT IGNORE INTO users (id, name, age)
+# VALUES (5, 'Walter White', 52);
+#
+# -- Ek table se doosri table me data copy karna
+# INSERT INTO users_backup (name, age)
+# SELECT name, age FROM users WHERE age > 30;
+#
+#
+#
+# select * from users
