@@ -61,3 +61,27 @@
 # SELECT id, name, date_of_birth
 # FROM users
 # WHERE date_of_birth <= '2000-01-01' OR date_of_birth IS NULL;
+
+# select MIN(users.salary) AS Min_Salary, MAX(salary) AS Max_Salary from users
+
+
+# SELECT sum(users.salary) AS tot_sal from users
+# SELECT name,AVG(salary) AS avg_sal from users GROUP BY name order by name desc
+# SELECT gender,SUM(salary) AS tot_sal from users GROUP BY gender
+
+# SELECT name, LOWER(name) AS lowercase_name, UPPER(name) AS uppercase_name FROM users
+# SELECT id,gender, CONCAT(name, ' <', email, '>') AS user_contact, now() as time,year(date_of_birth) as yob FROM users;
+# SELECT name, DATEDIFF(CURDATE(), date_of_birth) AS days_lived FROM users;
+# SELECT name, TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) AS age FROM users;
+# SELECT salary,
+#        ROUND(salary) AS rounded,
+#        FLOOR(salary) AS floored,
+#        CEIL(salary) AS ceiled
+# FROM users;
+# SELECT name, gender,
+#        IF(gender = 'Female', 'Yes', 'No') AS is_female
+# FROM users;
+
+#  set autocommit =1;
+
+
