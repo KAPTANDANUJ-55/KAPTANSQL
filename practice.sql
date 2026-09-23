@@ -130,4 +130,81 @@
 #
 #
 #
-# select * from users
+# SHOW KEYS FROM users WHERE Key_name = 'PRIMARY';
+
+-- drop primary key
+# ALTER TABLE users
+#     DROP PRIMARY KEY;
+-- remove autoincrement
+# ALTER TABLE users MODIFY id INT NOT NULL;
+
+-- define primary key using alter
+# ALTER TABLE users
+#     ADD PRIMARY KEY (id);
+#
+# subqueries
+# select * from users where salary < (select AVG(salary) from users);
+
+# select name,gender,salary from users
+# where salary=(select MAX(salary) from users
+#                                  where salary>(select MIN(salary) from users));
+
+#
+# SELECT name, date_of_birth, gender
+# FROM users
+# WHERE date_of_birth NOT IN (
+#     SELECT date_of_birth
+#     FROM users
+#     WHERE gender = 'Female'
+# );
+# select u.name, u.gender, u.salary
+# from users u
+# where u.salary>(
+#     select AVG(salary)
+#     from users
+#     where u.gender= u.gender
+#     )
+
+
+
+# -------------GroupBY----------
+
+# select gender , COUNT(*) As Total_pep , AVG(salary) as avg_sal from users group by gender
+
+# ------------Having-----------
+
+-- YE GALAT HAI (Error dega: Invalid use of group function):
+# SELECT gender, count(*) as total_pep,AVG(salary) as avg_sal
+# FROM users
+# GROUP BY gender
+# HAVING AVG(salary) > 60000
+# alter table users modify column password varchar(255)
+
+#         update users set password='temp'
+# select * from users;
+
+
+# alter table users modify column email varchar(150) after id;
+# select gender ,min(salary) as min_Sal , max(salary) as max_Sal from users where gender in ('Male', 'Female') group by gender
+
+# select concat('<',name,gender,salary,'>') as dabba from users
+
+
+# select name,gender, AVG(TIMESTAMPDIFF(YEAR ,date_of_birth,curdate())) as newColum  from users group by gender,name
+
+
+# select name,gender, IF(gender='Gay','Yes','No')  as is_gay from users
+-- 1. Drop the existing foreign key constraint
+# ALTER TABLE fraudusers
+#     DROP FOREIGN KEY fraudusers_ibfk_1;
+#
+# -- 2. Recreate the foreign key with ON DELETE CASCADE
+# ALTER TABLE fraudusers
+#     ADD CONSTRAINT fraudusers_ibfk_1
+#         FOREIGN KEY (user_id)
+#             REFERENCES users (id)
+#             ON DELETE CASCADE;
+# COMMIT ;
+#   delete from users where id=1;
+#
+
