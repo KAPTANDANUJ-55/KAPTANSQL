@@ -73,5 +73,20 @@
 #       )
 
 
+# select *from forenva
 
-select * from faltu_log
+# select faltu_log.name , forenva.street
+# from faltu_log
+#     inner join forenva on faltu_log.id =forenva.faltu
+#  CREATE TABLE admin_users (
+#                               id INT PRIMARY KEY,
+#                               name VARCHAR(100),
+#                               email VARCHAR(100),
+#                               gender ENUM('Male', 'Female', 'Other'),
+#                               date_of_birth DATE,
+#                               salary INT
+#  );
+
+ SELECT name, 'User' as role FROM faltu_log
+ UNION
+ SELECT name, 'Admin' as role FROM admin_users order by name asc ;
