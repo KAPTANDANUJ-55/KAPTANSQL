@@ -87,6 +87,6 @@
 #                               salary INT
 #  );
 
- SELECT name, 'User' as role FROM faltu_log
- UNION
- SELECT name, 'Admin' as role FROM admin_users order by name asc ;
+#  SELECT name, 'User' as role FROM faltu_log
+#  UNION
+#  SELECT name, 'Admin' as role FROM admin_users order by name asc ;
